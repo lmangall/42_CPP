@@ -5,6 +5,7 @@
 #include <array>
 #include <cstddef> // For std::size_t
 #include "Contact.hpp"
+#include <iostream>
 
 
 #include "PhoneBook.hpp"
@@ -17,8 +18,9 @@ void PhoneBook::addContact(const Contact& newContact) {
         contacts[currentSize] = newContact;
         currentSize++;
     } else {
-        // Handle case where the phone book is full.
-        // You might want to overwrite the oldest contact or similar.
+        std::cout << "The phone book is full." << std::endl;
+        std::cout << "This last addition replaced the oldest contact" << std::endl;
+        contacts[currentSize] = newContact;        
     }
 }
 
