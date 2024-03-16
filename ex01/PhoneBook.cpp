@@ -24,7 +24,11 @@ void PhoneBook::addContact(const Contact& newContact) {
     }
 }
 
+const Contact& PhoneBook::getContact(int index) const 
+{return contacts[index];}
 
+std::size_t PhoneBook::getSize() const
+{return currentSize;}
 
 
 

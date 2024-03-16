@@ -23,7 +23,7 @@ private:
 //of the Contact object being created.
 
 public:
-    // Constructors
+    // Constructors    (used to initialize objects of a class)
     Contact(); // Default constructor: Creates an empty Contact object.
     //Parameterized constructor: Takes arguments to initialize the contact information.
     Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret);
@@ -43,8 +43,6 @@ public:
     std::string getNickname() const;
     std::string getPhoneNumber() const;
     std::string getDarkestSecret() const;
-
-    void displayContact() const;
 	
 };
 

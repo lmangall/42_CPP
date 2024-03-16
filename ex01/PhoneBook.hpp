@@ -8,15 +8,16 @@
 
 class PhoneBook {
 private:
-    Contact contacts[8]; // Use a raw array to comply with C++98
-    std::size_t currentSize; // Declaration without in-class initialization
-
+    Contact contacts[8];
+    std::size_t currentSize;
 public:
     PhoneBook(); // Constructor declaration
     void addContact(const Contact& newContact);
+    const Contact& getContact(int index) const;
+    std::size_t getSize() const;
 };
 
-#endif // PHONEBOOK_HPP
+#endif
 
 
 
