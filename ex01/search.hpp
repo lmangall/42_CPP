@@ -4,6 +4,8 @@
 #include "PhoneBook.hpp"
 
 void searchContacts(PhoneBook& phoneBook);
-void displayContacts(PhoneBook& phoneBook, int index, const Contact& contact);
+void displayOne(const Contact& contact);
+void displayAll(const PhoneBook& phonebook);
+
 
 #endif

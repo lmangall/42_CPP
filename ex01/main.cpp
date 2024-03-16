@@ -4,6 +4,29 @@
 #include "Contact.hpp"
 #include "Search.hpp"
 
+
+void addExampleContacts(PhoneBook& phoneBook, bool populateWithExamples) {
+  if (populateWithExamples) {
+    const int numExamples = 6;  // Number of example contacts
+
+    Contact exampleContacts[numExamples] = {
+        // Contact("Devil", "Satan", "The Naughty One", "666-666-666", "can't eat spicy food"),
+        Contact("The Dude", "Lebowski", "Duder, El Duderino, if you're not into the whole brevity thing", "", "Abides by his rug"),
+        Contact("Thomas", "Anderson", "Neo, The One", "", "Followed a rabbit, took a pill, stayed in Wonderland"),
+        Contact("Max", "Rockatansky", "Tom Hardy", "666-666-666", "Drove the Fury Road, chased by Immortan Joe"),
+        Contact("Sarah", "Connor", "Linda Hamilton", "666-666-666", "Fought Terminators, raised John Connor"),
+        Contact("Rick", "Deckard", "Blade Runner", "666-666-666", "Retired blade runner, hunted replicants"),
+        Contact("Arthur", "Dent", "Ordinary Englishman", "666-666-666", "Travelled aboard the Heart of Gold, mostly harmless"),
+        };
+
+    for (int i = 0; i < numExamples; ++i) {
+      phoneBook.addContact(exampleContacts[i]);
+    }
+
+    std::cout << "Phonebook populated with example contacts." << std::endl;
+  }
+}
+
 //& indicates that phoneBook is a reference to a PhoneBook object. 
 void addNewContact(PhoneBook& phoneBook) 
 {
@@ -37,6 +60,8 @@ void addNewContact(PhoneBook& phoneBook)
 
 void programStart(PhoneBook &phoneBook)
 {
+
+    addExampleContacts(phoneBook, true);
     std::string userChoice;
 
         std::cout << "     _________" << std::endl;
