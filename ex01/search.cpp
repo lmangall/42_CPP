@@ -7,6 +7,10 @@
 
 void displayContacts(const PhoneBook& phonebook, int index, const Contact& contact)
 {
+
+	(void)phonebook;
+	(void)index;
+
     std::cout << "First Name: " << contact.getFirstName() << std::endl;
     std::cout << "Last Name: " << contact.getLastName() << std::endl;
     std::cout << "Nickname: " << contact.getNickname() << std::endl;
@@ -16,7 +20,7 @@ void displayContacts(const PhoneBook& phonebook, int index, const Contact& conta
 }
 
 void searchContacts(PhoneBook& phonebook) {
-  int index;
+  size_t index;
   bool valid = false;
 
   while (!valid) {

@@ -2,6 +2,7 @@
 #include <string>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include "Search.hpp"
 
 //& indicates that phoneBook is a reference to a PhoneBook object. 
 void addNewContact(PhoneBook& phoneBook) 
@@ -55,6 +56,7 @@ void programStart(PhoneBook &phoneBook)
 
         std::cout << "You have three options to choose from:" << std::endl;
         std::cout << " - ADD to save a new contact" << std::endl;
+        std::cout << " - SEARCH to search the phonebook" << std::endl;
         std::cout << " - EXIT to exit the program" << std::endl << std::endl;
 
         std::cin >> userChoice;
@@ -64,8 +66,7 @@ void programStart(PhoneBook &phoneBook)
             addNewContact(phoneBook);
         } // Removed SEARCH case for brevity
         else if (userChoice == "SEARCH") {
-            std::cout << "Search function not implemented yet." << std::endl;
-
+            searchContacts(phoneBook);
         }
         else if (userChoice == "EXIT") {
             break;

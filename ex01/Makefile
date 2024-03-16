@@ -2,7 +2,8 @@ NAME	:= amazing_blazing_1982_8_addresses_phonebook__ooooo_yeah
 
 SRCS	:=	Contact.cpp \
 			PhoneBook.cpp \
-			amazing_blazing_1982_8_addresses_phonebook__ooooo_yeah.cpp
+			Search.cpp \
+			main.cpp
 
 OBJS 	:= $(SRCS:.cpp=.o)
 

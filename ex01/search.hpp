@@ -3,6 +3,7 @@
 
 #include "PhoneBook.hpp"
 
-void searchContacts(const PhoneBook& phoneBook);
+void searchContacts(PhoneBook& phoneBook);
+void displayContacts(PhoneBook& phoneBook, int index, const Contact& contact);
 
 #endif
