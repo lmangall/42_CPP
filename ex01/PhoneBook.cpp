@@ -2,13 +2,13 @@
 
 
 
-#include <array>
 #include <cstddef> // For int
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 #include "Search.hpp"
 #include <iostream>
 #include <iomanip> // Include for setfill and setw
+#include <cstdlib>  // For std::exit
 
 // Constructor definition
 PhoneBook::PhoneBook() : currentSize(0) {} // Initialize currentSize in the constructor
@@ -42,7 +42,7 @@ void PhoneBook::menu(PhoneBook& phoneBook) {
     }
     else if (userChoice == "EXIT") {
         std::cout << "Goodbye!" << std::endl;
-        exit(0);
+        std::exit(0);
     } else {
       std::cout << "Unrecognized option, please try again." << std::endl;
     }

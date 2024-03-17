@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Contact.hpp" // Includes the Contact class definition
 #include "PhoneBook.hpp" // NEEDED ?
-#include "Search.hpp" // NEEDED ?
 
 Contact::Contact() {}  // Default constructor
 
