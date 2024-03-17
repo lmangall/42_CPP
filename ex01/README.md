@@ -24,7 +24,7 @@ Use camelCase starting with a lowercase letter, e.g., addContact(), searchContac
 Variables:
 
 Use meaningful names that describe the purpose of the variable.
-Use camelCase starting with a lowercase letter, e.g., phoneNumber, darkestSecret.
+Use camelCase starting with a lowercase letter, e.g., _phoneNumber, _darkestSecret.
 Makefile
 Your Makefile should at least have rules for all (or default rule), clean, fclean, re.
 Use variables for compiler (CXX), compiler flags (CXXFLAGS), and your source files (SRC).

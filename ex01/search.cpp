@@ -12,7 +12,7 @@ void displayOne(const Contact &contact)
 	std::cout << std::endl
 			  << "  First Name_______" << contact.getFirstName() << std::endl;
 	std::cout << "  Last Name________" << contact.getLastName() << std::endl;
-	std::cout << "  Nickname_________" << contact.getNickname() << std::endl;
+	std::cout << "  _nickname_________" << contact.getNickname() << std::endl;
 	std::cout << "  Phone Number_____" << contact.getPhoneNumber() << std::endl;
 	std::cout << "  Darkest Secret___" << contact.getDarkestSecret() << std::endl
 			  << std::endl;
@@ -36,7 +36,7 @@ void displayAll(const PhoneBook &phoneBook)
 	std::cout << std::endl
 			  << std::endl;
 	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl
-			  << "│     Index│First Name│ Last Name│  Nickname│" << std::endl
+			  << "│     Index│First Name│ Last Name│  _nickname│" << std::endl
 			  << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
 
 	for (int index = 0; index < numContacts; ++index)
@@ -44,15 +44,15 @@ void displayAll(const PhoneBook &phoneBook)
 		const Contact &contact = phoneBook.getContact(index);
 
 		// Truncate all fields if necessary
-		std::string firstName = truncateField(contact.getFirstName(), maxFieldWidth);
-		std::string lastName = truncateField(contact.getLastName(), maxFieldWidth);
-		std::string nickname = truncateField(contact.getNickname(), maxFieldWidth);
+		std::string _firstName = truncateField(contact.getFirstName(), maxFieldWidth);
+		std::string _lastName = truncateField(contact.getLastName(), maxFieldWidth);
+		std::string _nickname = truncateField(contact.getNickname(), maxFieldWidth);
 
 		std::cout << "│";
 		std::cout << std::right << std::setfill(' ') << std::setw(maxFieldWidth) << index;
-		std::cout << "│" << std::setw(maxFieldWidth) << firstName;
-		std::cout << "│" << std::setw(maxFieldWidth) << lastName;
-		std::cout << "│" << std::setw(maxFieldWidth) << nickname;
+		std::cout << "│" << std::setw(maxFieldWidth) << _firstName;
+		std::cout << "│" << std::setw(maxFieldWidth) << _lastName;
+		std::cout << "│" << std::setw(maxFieldWidth) << _nickname;
 		std::cout << "│";
 		std::cout << std::endl;
 

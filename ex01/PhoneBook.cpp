@@ -71,27 +71,27 @@ void PhoneBook::createNewContact(PhoneBook& phoneBook)
 {
     Contact newContact;
 
-    newContact.setFirstName(getValidInput("Enter first name: "));
-    newContact.setLastName(getValidInput("Enter last name: "));
-    newContact.setNickname(getValidInput("Enter nickname: "));
-    // newContact.setPhoneNumber(getValidInput("Enter phone number: "));
-    newContact.setDarkestSecret(getValidInput("Enter darkest secret: "));
+    newContact.set_firstName(getValidInput("Enter first name: "));
+    newContact.set_lastName(getValidInput("Enter last name: "));
+    newContact.set_nickname(getValidInput("Enter _nickname: "));
+    // newContact.set_phoneNumber(getValidInput("Enter phone number: "));
+    newContact.set_darkestSecret(getValidInput("Enter darkest secret: "));
 
     // std::cout << "Enter last name: ";
-    // std::cin >> lastName;
-    // newContact.setLastName(lastName);
+    // std::cin >> _lastName;
+    // newContact.set_lastName(_lastName);
 
-    // std::cout << "Enter nickname: ";
-    // std::cin >> nickname;
-    // newContact.setNickname(nickname);
+    // std::cout << "Enter _nickname: ";
+    // std::cin >> _nickname;
+    // newContact.set_nickname(_nickname);
 
     // std::cout << "Enter phone number: ";
-    // std::cin >> phoneNumber;
-    // newContact.setPhoneNumber(phoneNumber);
+    // std::cin >> _phoneNumber;
+    // newContact.set_phoneNumber(_phoneNumber);
 
     // std::cout << "Enter darkest secret: ";
-    // std::cin >> darkestSecret;
-    // newContact.setDarkestSecret(darkestSecret);
+    // std::cin >> _darkestSecret;
+    // newContact.set_darkestSecret(_darkestSecret);
 
     //std::cout << std::endl << "contact added, going back to main menu:" << std::endl;
 

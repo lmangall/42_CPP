@@ -11,15 +11,15 @@ class Contact
 {
 private:
 	// Private member variables to store contact details
-    std::string firstName;
-    std::string lastName;
-    std::string nickname;
-    std::string phoneNumber;
-    std::string darkestSecret;
+    std::string _firstName;
+    std::string _lastName;
+    std::string _nickname;
+    std::string _phoneNumber;
+    std::string _darkestSecret;
 
-//std::string firstName: 
+//std::string _firstName: 
 //This parameter takes a std::string object
-//to initialize the firstName member variable
+//to initialize the _firstName member variable
 //of the Contact object being created.
 
 public:
@@ -27,15 +27,15 @@ public:
     Contact(); // Default constructor: Creates an empty Contact object.
     ~Contact() {} // Destructor: Cleans up the object when it is destroyed.
     //Parameterized constructor: Takes arguments to initialize the contact information.
-    Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret);
+    Contact(std::string _firstName, std::string _lastName, std::string _nickname, std::string _phoneNumber, std::string _darkestSecret);
 
     // Setters => to modify a class's private member variables from outside the class.
     //            Return type: void (don't return a value)
-    void setFirstName(const std::string &firstName);
-    void setLastName(const std::string &lastName);
-    void setNickname(const std::string &nickname);
-    void setPhoneNumber(const std::string &phoneNumber);
-    void setDarkestSecret(const std::string &darkestSecret);
+    void set_firstName(const std::string &_firstName);
+    void set_lastName(const std::string &_lastName);
+    void set_nickname(const std::string &_nickname);
+    void set_phoneNumber(const std::string &_phoneNumber);
+    void set_darkestSecret(const std::string &_darkestSecret);
 
     // Getters => Retrieve the values of private member variables from outside the class.
     //            Return type: void (don't return a value)
