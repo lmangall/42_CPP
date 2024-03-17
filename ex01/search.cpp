@@ -80,15 +80,14 @@ void searchContacts(PhoneBook& phonebook) {
 		{
 			std::cin.clear(); // Clear the error state from the stream
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
-			std::cout << std::endl << "Please enter an integer value: ";
+			std::cout << std::endl << "Please enter a valid index: between 0 and " << currentSize - 1 << std::endl;
 		} 
 		else
 		{
 			if (index >= 0 && index < currentSize)
 				valid = true;
 			else
-				std::cout << std::endl << "Please enter a valid index: between 0 and " << currentSize - 1 << std::endl;
-		}
+ 				std::cout << std::endl << "\033[38;5;214mPlease enter a valid index: between 0 and " << currentSize - 1 << " \033[0m" << std::endl;		}
 	}
 
 	const Contact& contact = phonebook.getContact(index);
