@@ -33,7 +33,9 @@ void displayAll(PhoneBook& phonebook) {
    int numContacts = phonebook.getSize();
    int maxFieldWidth = 10;  // Apply to all fields
 
-   std::cout << "Phonebook" << std::endl;
+  std::cout << "\033[35m";
+
+   std::cout << std::endl << std::endl;
    std::cout << "┌──────────┬──────────┬──────────┬──────────┐\n"
              << "│     Index│First Name│ Last Name│  Nickname│\n"
              << "├──────────┼──────────┼──────────┼──────────┤\n";
@@ -58,6 +60,7 @@ void displayAll(PhoneBook& phonebook) {
    }
 
    std::cout << "└──────────┴──────────┴──────────┴──────────┘\n";
+    std::cout << "\033[0m";
 }
 
 

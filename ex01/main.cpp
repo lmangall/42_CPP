@@ -25,7 +25,7 @@ void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
       phoneBook.addContact(exampleContacts[i], phoneBook);
     }
 
-    std::cout << "Phonebook populated with example contacts." << std::endl;
+    std::cout << "\033[31mPhonebook populated with example contacts for ease of use.\033[0m" << std::endl;
   }
 }
 
@@ -60,6 +60,7 @@ void programStart(PhoneBook &phoneBook)
     fillPhonebook(phoneBook, true);
     std::string userChoice;
 
+        std::cout << "\033[32m"; // Set text color to green (code 32)
         std::cout << "     _________" << std::endl;
         std::cout << "    / ======= \\" << std::endl;
         std::cout << "   / __________\\" << std::endl;
@@ -67,10 +68,12 @@ void programStart(PhoneBook &phoneBook)
         std::cout << "  | | -       | |" << std::endl;
         std::cout << "  | |         | |" << std::endl;
         std::cout << "  | |_________| |________________________________" << std::endl;
-        std::cout << "  \\=____________/   Welcome to the phonebook    )" << std::endl;
-        std::cout << "  / \"\"\"\"\"\"\"\"\"\"\" \\                             /" << std::endl;
-        std::cout << " / ::::::::::::: \\                         =D-'" << std::endl;
+        std::cout << "  \\=____________/   Welcome to the phonebook     )" << std::endl;
+        std::cout << "  / \"\"\"\"\"\"\"\"\"\"\" \\                               /" << std::endl;
+        std::cout << " / ::::::::::::: \\                          =D-'" << std::endl;
         std::cout << "(_________________)" << std::endl << std::endl;
+        std::cout << "\033[0m"; // Reset text color to default
+
 }
 
 int main()
