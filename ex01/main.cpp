@@ -22,7 +22,7 @@ void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
         };
 
     for (int i = 0; i < numExamples; ++i) {
-      phoneBook.addContact(exampleContacts[i], phoneBook);
+            phoneBook.addContact(exampleContacts[i], phoneBook);
     }
 
     std::cout << "\033[31mPhonebook populated with example contacts for ease of use.\033[0m" << std::endl;

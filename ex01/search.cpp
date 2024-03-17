@@ -40,7 +40,7 @@ void displayAll(PhoneBook& phonebook) {
              << "│     Index│First Name│ Last Name│  Nickname│\n"
              << "├──────────┼──────────┼──────────┼──────────┤\n";
 
-   for (int index = 0; index < numContacts; ++index) {
+	for (int index = 0; index < numContacts; ++index) {
        const Contact& contact = phonebook.getContact(index);
 
        // Truncate all fields if necessary

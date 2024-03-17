@@ -57,18 +57,15 @@ void PhoneBook::addContact(const Contact& newContact, PhoneBook& phoneBook)
 {
     int currentSize = phoneBook.getSize();
     if (currentSize < 8) {
-        // contacts[currentSize++] = newContact;
-        // phoneBook.currentSize++;
+        contacts[currentSize] = newContact;
+        phoneBook.currentSize++;
         std::cout << "Contact added!" << std::endl;
     } else {
-        std::cout  << std::endl << "  The phone book was full." << std::endl;
+        std::cout << std::endl << "\033[38;5;214m  The phone book was full." << std::endl;
         std::cout << "  This last addition replaced the oldest contact" << std::endl << std::endl;
-        // contacts[currentSize] = newContact;        
+        std::cout << "\033[0m";
+        contacts[currentSize % 8] = newContact;
     }
-    contacts[currentSize % 8] = newContact;
-    phoneBook.currentSize++;
-
-
 }
 
 const Contact& PhoneBook::getContact(int index) const 
