@@ -12,7 +12,7 @@ void displayOne(const Contact &contact)
 	std::cout << std::endl
 			  << "  First Name_______" << contact.getFirstName() << std::endl;
 	std::cout << "  Last Name________" << contact.getLastName() << std::endl;
-	std::cout << "  _nickname_________" << contact.getNickname() << std::endl;
+	std::cout << "  Nickname_________" << contact.getNickname() << std::endl;
 	std::cout << "  Phone Number_____" << contact.getPhoneNumber() << std::endl;
 	std::cout << "  Darkest Secret___" << contact.getDarkestSecret() << std::endl
 			  << std::endl;
@@ -36,7 +36,7 @@ void displayAll(const PhoneBook &phoneBook)
 	std::cout << std::endl
 			  << std::endl;
 	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl
-			  << "│     Index│First Name│ Last Name│  _nickname│" << std::endl
+			  << "│     Index│First Name│ Last Name│  nickname│" << std::endl
 			  << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
 
 	for (int index = 0; index < numContacts; ++index)

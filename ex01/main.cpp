@@ -30,14 +30,12 @@ void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
   }
 }
 
-void programStart(PhoneBook &phoneBook)
+void programStart()
 {
 
-    // (void)&phoneBook; // Silence the unused variable warning 
-    fillPhonebook(phoneBook, true);
     std::string userChoice;
 
-        std::cout << "\033[32m"; // Set text color to green (code 32)
+        std::cout << "\033[32m";
         std::cout << "     _________" << std::endl;
         std::cout << "    / ======= \\" << std::endl;
         std::cout << "   / __________\\" << std::endl;
@@ -49,14 +47,15 @@ void programStart(PhoneBook &phoneBook)
         std::cout << "  / \"\"\"\"\"\"\"\"\"\"\" \\                               /" << std::endl;
         std::cout << " / ::::::::::::: \\                          =D-'" << std::endl;
         std::cout << "(_________________)" << std::endl << std::endl;
-        std::cout << "\033[0m"; // Reset text color to default
+        std::cout << "\033[0m";
 
 }
 
 int main()
 {
     PhoneBook phoneBook;
-    programStart(phoneBook);//direct call to function
+    // fillPhonebook(phoneBook, true);
+    programStart();//direct call to function
     phoneBook.menu(phoneBook);//call to function using object
     return 0;
 }

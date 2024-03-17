@@ -67,36 +67,42 @@ std::string getValidInput(const std::string& prompt) {
 
 
 //& indicates that phoneBook is a reference to a PhoneBook object. 
-void PhoneBook::createNewContact(PhoneBook& phoneBook)
-{
+void PhoneBook::createNewContact(PhoneBook& phoneBook) {
     Contact newContact;
 
     newContact.set_firstName(getValidInput("Enter first name: "));
     newContact.set_lastName(getValidInput("Enter last name: "));
-    newContact.set_nickname(getValidInput("Enter _nickname: "));
-    // newContact.set_phoneNumber(getValidInput("Enter phone number: "));
+    newContact.set_nickname(getValidInput("Enter nickname: "));
     newContact.set_darkestSecret(getValidInput("Enter darkest secret: "));
 
-    // std::cout << "Enter last name: ";
-    // std::cin >> _lastName;
-    // newContact.set_lastName(_lastName);
+    std::string phoneNumber;
+    bool allDigits;
+    do {
+        phoneNumber = getValidInput("Enter phone number (digits only): ");
 
-    // std::cout << "Enter _nickname: ";
-    // std::cin >> _nickname;
-    // newContact.set_nickname(_nickname);
+        allDigits = true;
+        if (phoneNumber.length() != 10) {
+            allDigits = false;
+        } else {
+            for (int i = 0; i < 10; ++i) {
+                char c = phoneNumber[i];
+                if (!std::isdigit(c)) {
+                    allDigits = false;
+                    break;
+                }
+            }
+        }
+        newContact.set_phoneNumber(phoneNumber);
 
-    // std::cout << "Enter phone number: ";
-    // std::cin >> _phoneNumber;
-    // newContact.set_phoneNumber(_phoneNumber);
-
-    // std::cout << "Enter darkest secret: ";
-    // std::cin >> _darkestSecret;
-    // newContact.set_darkestSecret(_darkestSecret);
-
-    //std::cout << std::endl << "contact added, going back to main menu:" << std::endl;
+        if (!allDigits) {
+            std::cout << "\033[1;31mError: Phone number must contain only 10 digits. Please try again.\033[0m" << std::endl;
+        }
+    } while (!allDigits);
 
     phoneBook.addContact(newContact, phoneBook);
 }
+
+
 
 void PhoneBook::addContact(const Contact& newContact, PhoneBook& phoneBook) 
 {
