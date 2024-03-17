@@ -22,6 +22,12 @@ void PhoneBook::createNewContact(PhoneBook& phoneBook)
     Contact newContact;
     std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
 
+
+// A saved contact can’t have empty fields.
+//number only numeric
+//no pressing enter before input
+
+
     std::cout << "Enter first name: ";
     std::cin >> firstName;
     newContact.setFirstName(firstName);
@@ -51,13 +57,18 @@ void PhoneBook::addContact(const Contact& newContact, PhoneBook& phoneBook)
 {
     int currentSize = phoneBook.getSize();
     if (currentSize < 8) {
-        contacts[currentSize++] = newContact;
-        phoneBook.currentSize++;
+        // contacts[currentSize++] = newContact;
+        // phoneBook.currentSize++;
+        std::cout << "Contact added!" << std::endl;
     } else {
         std::cout  << std::endl << "  The phone book was full." << std::endl;
         std::cout << "  This last addition replaced the oldest contact" << std::endl << std::endl;
-        contacts[currentSize] = newContact;        
+        // contacts[currentSize] = newContact;        
     }
+    contacts[currentSize % 8] = newContact;
+    phoneBook.currentSize++;
+
+
 }
 
 const Contact& PhoneBook::getContact(int index) const 
@@ -65,6 +76,8 @@ const Contact& PhoneBook::getContact(int index) const
 
 int PhoneBook::getSize() const
 {return currentSize;}
+
+
 
 
 

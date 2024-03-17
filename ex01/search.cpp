@@ -71,6 +71,7 @@ void searchContacts(PhoneBook& phonebook) {
 	while (!valid) {
 		std::cout << std::endl << "Enter the index of the contact you want to search for: ";
 		std::cin >> index;
+		int currentSize = phonebook.getSize();
 
 		if (std::cin.fail()) 
 		{
@@ -80,10 +81,10 @@ void searchContacts(PhoneBook& phonebook) {
 		} 
 		else
 		{
-			if (index >= 0 && index < phonebook.getSize())
+			if (index >= 0 && index < currentSize)
 				valid = true;
 			else
-				std::cout << std::endl << "Please enter a valid index: ";
+				std::cout << std::endl << "Please enter a valid index: between 0 and " << currentSize - 1 << std::endl;
 		}
 	}
 

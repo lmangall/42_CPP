@@ -29,6 +29,31 @@ void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
   }
 }
 
+void menu(PhoneBook& phoneBook) {
+  std::string userChoice;
+
+  while (true) {
+    std::cout << "You have three options to choose from:" << std::endl;
+    std::cout << " - ADD to save a new contact" << std::endl;
+    std::cout << " - SEARCH to search the phonebook" << std::endl;
+    std::cout << " - EXIT to exit the program" << std::endl << std::endl;
+
+    std::cin >> userChoice;
+
+    if (userChoice == "ADD") {
+      phoneBook.createNewContact(phoneBook);
+    }
+    else if (userChoice == "SEARCH") {
+      searchContacts(phoneBook);
+    }
+    else if (userChoice == "EXIT") {
+      break;
+    } else {
+      std::cout << "Unrecognized option, please try again." << std::endl;
+    }
+  }
+}
+
 void programStart(PhoneBook &phoneBook)
 {
 
@@ -46,35 +71,13 @@ void programStart(PhoneBook &phoneBook)
         std::cout << "  / \"\"\"\"\"\"\"\"\"\"\" \\                             /" << std::endl;
         std::cout << " / ::::::::::::: \\                         =D-'" << std::endl;
         std::cout << "(_________________)" << std::endl << std::endl;
-
-    while (true) 
-    {
-
-        std::cout << "You have three options to choose from:" << std::endl;
-        std::cout << " - ADD to save a new contact" << std::endl;
-        std::cout << " - SEARCH to search the phonebook" << std::endl;
-        std::cout << " - EXIT to exit the program" << std::endl << std::endl;
-
-        std::cin >> userChoice;
-
-        if (userChoice == "ADD") {
-            phoneBook.createNewContact(phoneBook);
-        }
-        else if (userChoice == "SEARCH") {
-            searchContacts(phoneBook);
-        }
-        else if (userChoice == "EXIT") {
-            break;
-        } else {
-            std::cout << "Unrecognized option, please try again." << std::endl;
-        }
-    }
 }
 
 int main()
 {
     PhoneBook phoneBook;
     programStart(phoneBook);
+    menu(phoneBook);
     return 0;
 }
 
