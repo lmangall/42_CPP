@@ -1,7 +1,3 @@
-
-
-
-
 #include <cstddef> // For int
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
@@ -16,41 +12,35 @@ PhoneBook::PhoneBook() : currentSize(0) {} // Initialize currentSize in the cons
 void PhoneBook::menu(PhoneBook& phoneBook) {
   std::string userChoice;
 
-  while (true) {
- std::cout << "\033[34m";
+  while (true)
+  {
 
-  // Display table header
-  std::cout << std::endl << "   " << std::setw(18) << std::left << "MAIN MENU" << std::endl;
+    //setw => Sets the minimum field for next print - be right-padded with spaces if less than the specified width.
+    std::cout << "\033[34m";
+    std::cout << std::endl << "   " << std::setw(18) << std::left << "MAIN MENU" << std::endl;
+    std::cout << "  --------------------------------------------" << std::endl;
+    std::cout << "  - type " << std::setw(13) << std::left << "ADD" << " to save a new contact" << std::endl;
+    std::cout << "  - type " << std::setw(13) << std::left << "SEARCH" << " to search the phonebook" << std::endl;
+    std::cout << "  - type " << std::setw(13) << std::left << "EXIT" << " to exit the program" << std::endl;
+    std::cout << "  --------------------------------------------" << std::endl;
+    std::cout << "\033[0m" << std::endl;
 
-  // Display menu options with separators
-  std::cout << "  --------------------------------------------" << std::endl;
-  std::cout << "  - type " << std::setw(13) << std::left << "ADD" << " to save a new contact" << std::endl;
-  std::cout << "  - type " << std::setw(13) << std::left << "SEARCH" << " to search the phonebook" << std::endl;
-  std::cout << "  - type " << std::setw(13) << std::left << "EXIT" << " to exit the program" << std::endl;
-  std::cout << "  --------------------------------------------" << std::endl;
+        std::cin >> userChoice;
 
-  // Reset color to default
-  std::cout << "\033[0m" << std::endl;
-
-    std::cin >> userChoice;
-
-    if (userChoice == "ADD") {
-      phoneBook.createNewContact(phoneBook);
-    }
-    else if (userChoice == "SEARCH") {
-      searchContacts(phoneBook);
-    }
-    else if (userChoice == "EXIT") {
-        std::cout << "Goodbye!" << std::endl;
-        std::exit(0);
-    } else {
-      std::cout << "Unrecognized option, please try again." << std::endl;
-    }
+        if (userChoice == "ADD")
+        phoneBook.createNewContact(phoneBook);
+        else if (userChoice == "SEARCH")
+        searchContacts(phoneBook);
+        else if (userChoice == "EXIT") {
+            std::exit(0);
+        } else
+        std::cout << "\033[1;31mUnrecognized option, please try again.\033[0m" << std::endl;
   }
 }
 
 
-std::string getValidInput(const std::string& prompt) {
+std::string getValidInput(const std::string& prompt)
+{
     std::string input;
 
     do {
@@ -66,8 +56,9 @@ std::string getValidInput(const std::string& prompt) {
 }
 
 
-//& indicates that phoneBook is a reference to a PhoneBook object. 
-void PhoneBook::createNewContact(PhoneBook& phoneBook) {
+//& indicates that phoneBook is a reference to a PhoneBook object.  (similar pointer)
+void PhoneBook::createNewContact(PhoneBook& phoneBook)
+{
     Contact newContact;
 
     newContact.set_firstName(getValidInput("Enter first name: "));
@@ -126,11 +117,6 @@ const Contact& PhoneBook::getContact(int index) const
 
 int PhoneBook::getSize() const
 {return currentSize;}
-
-
-
-
-
 
 
 // PhoneBook class has at least two public methods: addContact and searchContacts,

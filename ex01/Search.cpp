@@ -8,14 +8,14 @@
 
 void displayOne(const Contact &contact)
 {
-
-	std::cout << std::endl
+	std::cout << "\033[35m" << std::endl
 			  << "  First Name_______" << contact.getFirstName() << std::endl;
 	std::cout << "  Last Name________" << contact.getLastName() << std::endl;
 	std::cout << "  Nickname_________" << contact.getNickname() << std::endl;
 	std::cout << "  Phone Number_____" << contact.getPhoneNumber() << std::endl;
 	std::cout << "  Darkest Secret___" << contact.getDarkestSecret() << std::endl
-			  << std::endl;
+			  << std::endl << "\033[0m";
+
 }
 
 std::string truncateField(const std::string &field, std::string::size_type maxWidth)
@@ -36,7 +36,7 @@ void displayAll(const PhoneBook &phoneBook)
 	std::cout << std::endl
 			  << std::endl;
 	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl
-			  << "│     Index│First Name│ Last Name│  nickname│" << std::endl
+			  << "│     INDEX│FIRST NAME│ LAST NAME│  NICKNAME|" << std::endl
 			  << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
 
 	for (int index = 0; index < numContacts; ++index)
@@ -58,8 +58,6 @@ void displayAll(const PhoneBook &phoneBook)
 
 		std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
 	}
-
-	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
 	std::cout << "\033[0m";
 }
 
@@ -73,17 +71,15 @@ void searchContacts(PhoneBook &phoneBook)
 	while (!valid)
 	{
 		std::cout << std::endl
-				  << "Enter the index of the contact you want to search for or -1 to go back to the main menu:";
+				  << "Enter the index of the contact you want to search for or -1 to go back to the main menu: ";
 		std::cin >> index;
 		int currentSize = phoneBook.getSize();
 
 		if (index == -1)
-		{
 			phoneBook.menu(phoneBook);
-		}
 		else if (std::cin.fail())
 		{
-			std::cin.clear();													// Clear the error state from the stream
+			std::cin.clear();// Clear the error state from the stream
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
 			std::cout << std::endl
 					  << "Please enter a valid index: between 0 and " << currentSize - 1 << std::endl;
