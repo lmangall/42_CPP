@@ -30,41 +30,6 @@ void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
   }
 }
 
-void menu(PhoneBook& phoneBook) {
-  std::string userChoice;
-
-  while (true) {
- std::cout << "\033[34m";
-
-  // Display table header
-  std::cout << std::endl << "   " << std::setw(18) << std::left << "MAIN MENU" << std::endl;
-
-  // Display menu options with separators
-  std::cout << "  --------------------------------------------" << std::endl;
-  std::cout << "  - type " << std::setw(13) << std::left << "ADD" << " to save a new contact" << std::endl;
-  std::cout << "  - type " << std::setw(13) << std::left << "SEARCH" << " to search the phonebook" << std::endl;
-  std::cout << "  - type " << std::setw(13) << std::left << "EXIT" << " to exit the program" << std::endl;
-  std::cout << "  --------------------------------------------" << std::endl;
-
-  // Reset color to default
-  std::cout << "\033[0m" << std::endl;
-
-    std::cin >> userChoice;
-
-    if (userChoice == "ADD") {
-      phoneBook.createNewContact(phoneBook);
-    }
-    else if (userChoice == "SEARCH") {
-      searchContacts(phoneBook);
-    }
-    else if (userChoice == "EXIT") {
-      break;
-    } else {
-      std::cout << "Unrecognized option, please try again." << std::endl;
-    }
-  }
-}
-
 void programStart(PhoneBook &phoneBook)
 {
 
@@ -91,7 +56,7 @@ int main()
 {
     PhoneBook phoneBook;
     programStart(phoneBook);
-    menu(phoneBook);
+    phoneBook.menu(phoneBook);
     return 0;
 }
 

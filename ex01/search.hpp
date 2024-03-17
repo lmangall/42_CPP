@@ -5,7 +5,7 @@
 
 void searchContacts(PhoneBook& phoneBook);
 void displayOne(const Contact& contact);
-void displayAll(const PhoneBook& phonebook);
+void displayAll(const PhoneBook& phoneBook);
 
 
 #endif

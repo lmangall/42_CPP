@@ -7,6 +7,7 @@
 #include <iomanip> // Include for setfill and setw
 
 
+
 void displayOne(const Contact& contact)
 {
 
@@ -18,20 +19,20 @@ void displayOne(const Contact& contact)
 
 }
 
-std::string truncateField(const std::string& field, std::string::size_type maxWidth) {
-   if (field.length() > maxWidth) {
+std::string truncateField(const std::string& field, std::string::size_type maxWidth)
+{
+   if (field.length() > maxWidth)
 	   return field.substr(0, maxWidth - 1) + '.';
-   } else {
-	   return field;
-   }
+   else
+   	   return field;
+   
 }
 
 
-void displayAll(PhoneBook& phonebook) {
-   (void)phonebook;
-
-   int numContacts = phonebook.getSize();
-   int maxFieldWidth = 10;  // Apply to all fields
+void displayAll(const PhoneBook& phoneBook) 
+{
+   int numContacts = 8;
+   int maxFieldWidth = 10;
 
   std::cout << "\033[35m";
 
@@ -41,7 +42,7 @@ void displayAll(PhoneBook& phonebook) {
              << "├──────────┼──────────┼──────────┼──────────┤\n";
 
 	for (int index = 0; index < numContacts; ++index) {
-       const Contact& contact = phonebook.getContact(index);
+       const Contact& contact = phoneBook.getContact(index);
 
        // Truncate all fields if necessary
        std::string firstName = truncateField(contact.getFirstName(), maxFieldWidth);
@@ -65,18 +66,23 @@ void displayAll(PhoneBook& phonebook) {
 
 
 
-void searchContacts(PhoneBook& phonebook) {
+void searchContacts(PhoneBook& phoneBook)
+{
 	int index;
 	bool valid = false;
 
-	displayAll(phonebook);
+	displayAll(phoneBook);
 
 	while (!valid) {
-		std::cout << std::endl << "Enter the index of the contact you want to search for: ";
+		std::cout << std::endl << "Enter the index of the contact you want to search for or -1 to go back to the main menu:";
 		std::cin >> index;
-		int currentSize = phonebook.getSize();
+		int currentSize = phoneBook.getSize();
 
-		if (std::cin.fail()) 
+		if (index == -1) 
+		{
+        phoneBook.menu(phoneBook);
+		}
+		else if (std::cin.fail()) 
 		{
 			std::cin.clear(); // Clear the error state from the stream
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
@@ -90,6 +96,6 @@ void searchContacts(PhoneBook& phonebook) {
  				std::cout << std::endl << "\033[38;5;214mPlease enter a valid index: between 0 and " << currentSize - 1 << " \033[0m" << std::endl;		}
 	}
 
-	const Contact& contact = phonebook.getContact(index);
+	const Contact& contact = phoneBook.getContact(index);
 	displayOne(contact);
 }

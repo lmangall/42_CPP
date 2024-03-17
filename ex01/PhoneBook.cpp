@@ -8,13 +8,46 @@
 #include "PhoneBook.hpp"
 #include "Search.hpp"
 #include <iostream>
-
-
-#include "PhoneBook.hpp"
+#include <iomanip> // Include for setfill and setw
 
 // Constructor definition
 PhoneBook::PhoneBook() : currentSize(0) {} // Initialize currentSize in the constructor
 
+void PhoneBook::menu(PhoneBook& phoneBook) {
+  std::string userChoice;
+
+  while (true) {
+ std::cout << "\033[34m";
+
+  // Display table header
+  std::cout << std::endl << "   " << std::setw(18) << std::left << "MAIN MENU" << std::endl;
+
+  // Display menu options with separators
+  std::cout << "  --------------------------------------------" << std::endl;
+  std::cout << "  - type " << std::setw(13) << std::left << "ADD" << " to save a new contact" << std::endl;
+  std::cout << "  - type " << std::setw(13) << std::left << "SEARCH" << " to search the phonebook" << std::endl;
+  std::cout << "  - type " << std::setw(13) << std::left << "EXIT" << " to exit the program" << std::endl;
+  std::cout << "  --------------------------------------------" << std::endl;
+
+  // Reset color to default
+  std::cout << "\033[0m" << std::endl;
+
+    std::cin >> userChoice;
+
+    if (userChoice == "ADD") {
+      phoneBook.createNewContact(phoneBook);
+    }
+    else if (userChoice == "SEARCH") {
+      searchContacts(phoneBook);
+    }
+    else if (userChoice == "EXIT") {
+        std::cout << "Goodbye!" << std::endl;
+        exit(0);
+    } else {
+      std::cout << "Unrecognized option, please try again." << std::endl;
+    }
+  }
+}
 
 //& indicates that phoneBook is a reference to a PhoneBook object. 
 void PhoneBook::createNewContact(PhoneBook& phoneBook)
@@ -57,15 +90,17 @@ void PhoneBook::addContact(const Contact& newContact, PhoneBook& phoneBook)
 {
     int currentSize = phoneBook.getSize();
     if (currentSize < 8) {
-        contacts[currentSize] = newContact;
-        phoneBook.currentSize++;
+        // contacts[currentSize] = newContact;
+        // phoneBook.currentSize++;
         std::cout << "Contact added!" << std::endl;
     } else {
         std::cout << std::endl << "\033[38;5;214m  The phone book was full." << std::endl;
         std::cout << "  This last addition replaced the oldest contact" << std::endl << std::endl;
         std::cout << "\033[0m";
-        contacts[currentSize % 8] = newContact;
+        // contacts[currentSize % 8] = newContact;
     }
+    contacts[currentSize % 8] = newContact;
+    phoneBook.currentSize++;
 }
 
 const Contact& PhoneBook::getContact(int index) const 

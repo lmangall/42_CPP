@@ -17,6 +17,7 @@ public:
     void addContact(const Contact& newContact, PhoneBook& phoneBook);
     const Contact& getContact(int index) const;
     int getSize() const;
+    void menu(PhoneBook& phoneBook);
 };
 
 #endif
