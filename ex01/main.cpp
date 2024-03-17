@@ -33,6 +33,7 @@ void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
 void programStart(PhoneBook &phoneBook)
 {
 
+    // (void)&phoneBook; // Silence the unused variable warning 
     fillPhonebook(phoneBook, true);
     std::string userChoice;
 
@@ -55,11 +56,8 @@ void programStart(PhoneBook &phoneBook)
 int main()
 {
     PhoneBook phoneBook;
-    programStart(phoneBook);
-    phoneBook.menu(phoneBook);
+    programStart(phoneBook);//direct call to function
+    phoneBook.menu(phoneBook);//call to function using object
     return 0;
 }
 
-
-
-// Contact myContact("John", "Doe", "Johnny D", "123-456-7890", "Something unspeakable");

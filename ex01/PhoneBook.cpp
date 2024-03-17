@@ -49,37 +49,49 @@ void PhoneBook::menu(PhoneBook& phoneBook) {
   }
 }
 
+
+std::string getValidInput(const std::string& prompt) {
+    std::string input;
+
+    do {
+        if (!input.empty())
+            std::cout << "\033[1;31mError: Input cannot be empty. Please try again.\033[0m" << std::endl;
+        else
+            std::cout << prompt;
+
+        std::getline(std::cin, input);
+    } while (input.empty());
+
+    return input;
+}
+
+
 //& indicates that phoneBook is a reference to a PhoneBook object. 
 void PhoneBook::createNewContact(PhoneBook& phoneBook)
 {
     Contact newContact;
-    std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
 
+    newContact.setFirstName(getValidInput("Enter first name: "));
+    newContact.setLastName(getValidInput("Enter last name: "));
+    newContact.setNickname(getValidInput("Enter nickname: "));
+    // newContact.setPhoneNumber(getValidInput("Enter phone number: "));
+    newContact.setDarkestSecret(getValidInput("Enter darkest secret: "));
 
-// A saved contact can’t have empty fields.
-//number only numeric
-//no pressing enter before input
+    // std::cout << "Enter last name: ";
+    // std::cin >> lastName;
+    // newContact.setLastName(lastName);
 
+    // std::cout << "Enter nickname: ";
+    // std::cin >> nickname;
+    // newContact.setNickname(nickname);
 
-    std::cout << "Enter first name: ";
-    std::cin >> firstName;
-    newContact.setFirstName(firstName);
+    // std::cout << "Enter phone number: ";
+    // std::cin >> phoneNumber;
+    // newContact.setPhoneNumber(phoneNumber);
 
-    std::cout << "Enter last name: ";
-    std::cin >> lastName;
-    newContact.setLastName(lastName);
-
-    std::cout << "Enter nickname: ";
-    std::cin >> nickname;
-    newContact.setNickname(nickname);
-
-    std::cout << "Enter phone number: ";
-    std::cin >> phoneNumber;
-    newContact.setPhoneNumber(phoneNumber);
-
-    std::cout << "Enter darkest secret: ";
-    std::cin >> darkestSecret;
-    newContact.setDarkestSecret(darkestSecret);
+    // std::cout << "Enter darkest secret: ";
+    // std::cin >> darkestSecret;
+    // newContact.setDarkestSecret(darkestSecret);
 
     //std::cout << std::endl << "contact added, going back to main menu:" << std::endl;
 
