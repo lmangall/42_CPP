@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 #include "Contact.hpp"
-#include <cstddef> // For std::size_t
+#include <cstddef> // For int
 
 //The class declaration is in .hpp
 
@@ -9,12 +9,14 @@
 class PhoneBook {
 private:
     Contact contacts[8];
-    std::size_t currentSize;
+    int currentSize;
 public:
     PhoneBook(); // Constructor declaration
-    void addContact(const Contact& newContact);
+//    ~PhoneBook();
+    void createNewContact(PhoneBook& phoneBook); 
+    void addContact(const Contact& newContact, PhoneBook& phoneBook);
     const Contact& getContact(int index) const;
-    std::size_t getSize() const;
+    int getSize() const;
 };
 
 #endif

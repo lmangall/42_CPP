@@ -1,4 +1,9 @@
+
 {
+	"editor.tabSize": 4,
+	"files.autoSave": "onFocusChange",
+	//"editor.formatOnSave": true, // Formats your code when you save the file
+
 	"files.associations": {
 		"__bit_reference": "cpp",
 		"__bits": "cpp",

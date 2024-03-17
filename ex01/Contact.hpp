@@ -25,6 +25,7 @@ private:
 public:
     // Constructors    (used to initialize objects of a class)
     Contact(); // Default constructor: Creates an empty Contact object.
+    ~Contact() {} // Destructor: Cleans up the object when it is destroyed.
     //Parameterized constructor: Takes arguments to initialize the contact information.
     Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret);
 

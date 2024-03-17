@@ -5,9 +5,9 @@
 #include "Search.hpp"
 
 
-void addExampleContacts(PhoneBook& phoneBook, bool populateWithExamples) {
+void fillPhonebook(PhoneBook& phoneBook, bool populateWithExamples) {
   if (populateWithExamples) {
-    const int numExamples = 6;  // Number of example contacts
+    const int numExamples = 8;
 
     Contact exampleContacts[numExamples] = {
         // Contact("Devil", "Satan", "The Naughty One", "666-666-666", "can't eat spicy food"),
@@ -16,52 +16,23 @@ void addExampleContacts(PhoneBook& phoneBook, bool populateWithExamples) {
         Contact("Max", "Rockatansky", "Tom Hardy", "666-666-666", "Drove the Fury Road, chased by Immortan Joe"),
         Contact("Sarah", "Connor", "Linda Hamilton", "666-666-666", "Fought Terminators, raised John Connor"),
         Contact("Rick", "Deckard", "Blade Runner", "666-666-666", "Retired blade runner, hunted replicants"),
-        Contact("Arthur", "Dent", "Ordinary Englishman", "666-666-666", "Travelled aboard the Heart of Gold, mostly harmless"),
+        Contact("Zaphod", "Beeblebrox", "Two-headed, semi-retired Galactic President", "666-666-666", "Has two heads, mostly harmless (except for the other head)"),
+        Contact("Marvin", "the Paranoid Android", "The most depressed robot in the Universe", "Error: Does not compute", "Secretly yearns to be happy but believes happiness is impossible"),
+        Contact("Mini", "Shell", "MiniHell, the mighty, fuc*** hell", "666-666-666", "Makes your life hell (not a secret)"), 
         };
 
     for (int i = 0; i < numExamples; ++i) {
-      phoneBook.addContact(exampleContacts[i]);
+      phoneBook.addContact(exampleContacts[i], phoneBook);
     }
 
     std::cout << "Phonebook populated with example contacts." << std::endl;
   }
 }
 
-//& indicates that phoneBook is a reference to a PhoneBook object. 
-void addNewContact(PhoneBook& phoneBook) 
-{
-    Contact newContact;
-    std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
-
-    std::cout << "Enter first name: ";
-    std::cin >> firstName;
-    newContact.setFirstName(firstName);
-    
-    std::cout << "Enter last name: ";
-    std::cin >> lastName;
-    newContact.setLastName(lastName);
-
-    std::cout << "Enter nickname: ";
-    std::cin >> nickname;
-    newContact.setNickname(nickname);
-
-    std::cout << "Enter phone number: ";
-    std::cin >> phoneNumber;
-    newContact.setPhoneNumber(phoneNumber);
-
-    std::cout << "Enter darkest secret: ";
-    std::cin >> darkestSecret;
-    newContact.setDarkestSecret(darkestSecret);
-
-    std::cout << std::endl << "contact added, going back to main menu:" << std::endl;
-
-    phoneBook.addContact(newContact);
-}
-
 void programStart(PhoneBook &phoneBook)
 {
 
-    addExampleContacts(phoneBook, true);
+    fillPhonebook(phoneBook, true);
     std::string userChoice;
 
         std::cout << "     _________" << std::endl;
@@ -87,9 +58,8 @@ void programStart(PhoneBook &phoneBook)
         std::cin >> userChoice;
 
         if (userChoice == "ADD") {
-            // Call addNewContact instead of phoneBook.addContact()
-            addNewContact(phoneBook);
-        } // Removed SEARCH case for brevity
+            phoneBook.createNewContact(phoneBook);
+        }
         else if (userChoice == "SEARCH") {
             searchContacts(phoneBook);
         }
