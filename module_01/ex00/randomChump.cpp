@@ -5,7 +5,7 @@
 // with a specific name, and invokes a method on that object.
 void	randomChump(std::string name)
 {
-	Zombie oneZombie(name);
+	Zombie oneZombie(name); // Allocated on the stack
 
 	// The method call oneZombie.announce(); invokes the announce method on the oneZombie object.
 	// This method is defined within the Zombie class
