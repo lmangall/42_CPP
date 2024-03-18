@@ -1,4 +1,4 @@
-NAME	:= Zombies_program
+NAME	:= a_very_brainy_program
 
 SRCS	:=	main.cpp
 
