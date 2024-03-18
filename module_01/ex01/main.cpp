@@ -16,7 +16,7 @@ int main(void){
 	Zombie *PointerToFirstZombie = zombieHorde(5, "SeveralZombies");
 
 	for (int i = 0; i < 5; i++){
-		std::cout << "Zombie" << i << "is announcing himself:";
+		std::cout << "Zombie " << i << " is announcing himself:  ";
 		PointerToFirstZombie[i].announce();
 	}
 	delete[] PointerToFirstZombie;
