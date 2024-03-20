@@ -1,15 +1,12 @@
-NAME	:= Unnecessary_violence
+NAME	:= Sed_is_for_losers
 
-SRCS	:=	main.cpp \
-			Weapon.cpp \
-			HumanA.cpp \
-			HumanB.cpp
+SRCS	:=	main.cpp
 
 OBJS_DIR := obj/
 OBJS 	:= $(SRCS:.cpp=.o)
 OBJS	:= $(addprefix $(OBJS_DIR),$(OBJS))
 
-CXX	:= g++
+CXX	:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
