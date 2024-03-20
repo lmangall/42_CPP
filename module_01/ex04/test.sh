@@ -70,24 +70,17 @@ echo -n "Running Test 5... "
 echo "This is test file number 5. The program should not be able to read this file." > "test_input_5.txt"
 STRING_TO_REPLACE="should"
 REPLACEMENT_STRING="SHOULD"
-
-# Remove read permissions from the file
 chmod 000 "test_input_5.txt" # No permissions
-
 ./Sed_is_for_losers "test_input_5.txt" "$STRING_TO_REPLACE" "$REPLACEMENT_STRING"
-
-# Since the file is not readable, check if the program handles this gracefully
-if [ ! -f "test_input_5.txt.replace" ]; then
+if [ ! -f "test_input_5.txt.replace" ]; then #"if the file test_input_5.txt.replace does not exist consider Test 5 passed
     echo -e "\e[32mTest 5 Passed: Program handled the lack of read permissions gracefully.\e[0m"
 else
     echo "Test 5 Failed: The program should not generate an output file when it cannot read the input file."
 fi
-
-# Restore file permissions to allow for cleanup
 chmod 644 "test_input_5.txt"
 
 
-# Step 3: Clean up
+# Clean up
 echo "Cleaning up..."
 rm -f test_input_*
 rm -f expected_output_*

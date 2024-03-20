@@ -51,7 +51,7 @@ void Harl::complain(std::string level) {
     for (int i = 0; i < 4; ++i) {
         if (levels[i] == level) {
  			// dereferences the member function pointer and calls the function on 'this' object
-            // 'this' is a pointer to the current object, so 'this->*ptrs[i]' accesses the member function pointed by ptrs[i] and calls it
+            // 'this->*ptrs[i]' accesses the member function pointed by ptrs[i] and calls it
             (this->*ptrs[i])();
             found = true;
             break;
