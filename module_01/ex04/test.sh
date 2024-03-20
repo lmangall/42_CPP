@@ -49,7 +49,7 @@ else
     diff "expected_output_3.txt" "test_input_3.txt.replace"
 fi
 
-# Test 4 creates a file with newline characters and replaces them with the word "replaced".
+# Test 4 creates a file with newline characters and replaces them with the spaces.
 echo -n "Running Test 4... "
 echo -en "This is a\\nmultiline\\nfile." > "test_input_4.txt" # Escape \n
 STRING_TO_REPLACE=$'\n'
@@ -63,6 +63,28 @@ else
     echo "Differences:"
     diff "expected_output_4.txt" "test_input_4.txt.replace"
 fi
+
+
+# Test 5 creates a file and then changes its permissions to remove read access before attempting to replace contents
+echo -n "Running Test 5... "
+echo "This is test file number 5. The program should not be able to read this file." > "test_input_5.txt"
+STRING_TO_REPLACE="should"
+REPLACEMENT_STRING="SHOULD"
+
+# Remove read permissions from the file
+chmod 000 "test_input_5.txt" # No permissions
+
+./Sed_is_for_losers "test_input_5.txt" "$STRING_TO_REPLACE" "$REPLACEMENT_STRING"
+
+# Since the file is not readable, check if the program handles this gracefully
+if [ ! -f "test_input_5.txt.replace" ]; then
+    echo -e "\e[32mTest 5 Passed: Program handled the lack of read permissions gracefully.\e[0m"
+else
+    echo "Test 5 Failed: The program should not generate an output file when it cannot read the input file."
+fi
+
+# Restore file permissions to allow for cleanup
+chmod 644 "test_input_5.txt"
 
 
 # Step 3: Clean up

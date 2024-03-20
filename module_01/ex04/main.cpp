@@ -94,7 +94,7 @@ int main(int argc, char* argv[]) {
 
     std::string content = readFileContent(filename);
     if (content.empty()) {
-        std::cerr << "Failed to read from file: " << filename << std::endl;
+        std::cerr << "Error: Failed to read from file: " << filename << std::endl;
         return 1;
     }
 

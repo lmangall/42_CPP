@@ -7,7 +7,7 @@ class HumanA
 {
   private:
 	std::string _name;
-	Weapon& _weapon;
+	Weapon& _weapon;// reference to a Weapon object
 
   public:
 	HumanA(std::string name, Weapon& weapon);

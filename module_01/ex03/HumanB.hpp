@@ -7,7 +7,7 @@ class HumanB
 {
   private:
 	std::string _name;
-	Weapon* _weapon;
+	Weapon* _weapon;// we don't know if it's armed at creation time, so we use a pointer instead of a reference
 
   public:
 	HumanB(std::string name);
