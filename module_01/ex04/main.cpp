@@ -3,36 +3,12 @@
 #include <sstream>
 #include <string>
 
-bool isWhitespace(char ch) {
-    return (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\v' || ch == '\r' || ch == '\f');
-}
-
-bool hasOnlyWhitespace(const std::string& content) {
-    bool allWhitespace = true;
-    for (size_t i = 0; i < content.length(); ++i) {
-        char ch = content[i];
-        if (!isWhitespace(ch)) {
-            allWhitespace = false;
-            break;
-        }
-    }
-    return allWhitespace;
-}
-
-// Function to read file content
 std::string readFileContent(const std::string& filename) {
     std::ifstream file(filename.c_str());
     if (!file.is_open()) return "";
     std::stringstream buffer;
     buffer << file.rdbuf();
-
     std::string content = buffer.str();
-
-    // Check for only whitespace characters (without algorithm)
-    if (hasOnlyWhitespace(content)) {
-        std::cerr << "Error: File contains only whitespace characters." << std::endl;
-        return ""; // Or throw an exception if preferred
-    }
 
     return content;
 }
@@ -85,7 +61,7 @@ bool parse(const std::string& filename, const std::string& s1, const std::string
 	// return true;
 
 	if (filename.empty() || s1.empty() || s2.empty()) {
-		std::cerr << "Error: Invalid input: filename, string1 or s2 is string2" << std::endl;
+		std::cerr << "Error: Invalid input: filename, string1 or string2 is empty" << std::endl;
 		return false;
 	}
 
@@ -99,7 +75,7 @@ bool parse(const std::string& filename, const std::string& s1, const std::string
 
 int main(int argc, char* argv[]) {
 
-	std::cout << std::endl;
+	// std::cout << std::endl;
 
 	if(argc != 4) {
 		std::cerr << "Error: Invalid input (wrong number of arguments)" << std::endl;
