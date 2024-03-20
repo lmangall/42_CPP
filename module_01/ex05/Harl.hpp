@@ -1,4 +1,5 @@
-
+#ifndef HARL_HPP
+#define HARL_HPP
 
 #include <string>
 
@@ -10,15 +11,9 @@ private:
 	void warning(void);
 	void error(void);
 public:
-	Harl(/* args */);
+	Harl();
 	~Harl();
 	void complain(std::string level);
 };
 
-Harl::Harl(/* args */)
-{
-}
-
-Harl::~Harl()
-{
-}
+#endif

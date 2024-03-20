@@ -1,9 +1,7 @@
-NAME	:= Unnecessary_violence
+NAME	:= Harl
 
 SRCS	:=	main.cpp \
-			Weapon.cpp \
-			HumanA.cpp \
-			HumanB.cpp
+			Harl.cpp
 
 OBJS_DIR := obj/
 OBJS 	:= $(SRCS:.cpp=.o)
