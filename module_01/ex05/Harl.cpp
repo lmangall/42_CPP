@@ -12,22 +12,22 @@ Harl::~Harl()
 }
 void Harl::debug(void)
 {
-	std::cout << "Debug" << std::endl;
+	std::cout << "Debug: Here's the thing." << std::endl;
 }
 
 void Harl::info(void)
 {
-	std::cout << "Info" << std::endl;
+	std::cout << "Info: Just sayin'" << std::endl;
 }
 
 void Harl::warning(void)
 {
-	std::cout << "Warning" << std::endl;
+	std::cout << "Warning: Y'all better be careful" << std::endl;
 }
 
 void Harl::error(void)
 {
-	std::cout << "Error" << std::endl;
+	std::cout << "Error: It's not going to work" << std::endl;
 }
 
 /**
