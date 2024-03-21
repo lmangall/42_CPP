@@ -12,6 +12,7 @@ private:
     unsigned int _attackDamage;
 
 public:
+	ClapTrap();
     ClapTrap(const std::string& name);
     ClapTrap(const ClapTrap& other); // Copy constructor
     ClapTrap& operator=(const ClapTrap& other); // Copy assignment operator

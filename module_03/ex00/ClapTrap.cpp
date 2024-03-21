@@ -1,13 +1,18 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() 
+    : _name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+    std::cout << "ClapTrap " << _name << " has been created." << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string& name) 
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << "ClapTrap " << _name << " has been created." << std::endl;
+    std::cout << "ClapTrap " << _name << " has been created, he received his points" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) 
     : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage) {
-    std::cout << "ClapTrap " << _name << " has been copied." << std::endl;
+    std::cout << "ClapTrap " << _name << " has been created through the copy creator." << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
