@@ -1,19 +1,37 @@
+Overloading:
+Overloading the Insertion Operator (<<)
+One common use of operator overloading is to define how objects of a custom class are output to streams, like the standard output stream (std::cout). By default, C++ does not know how to print custom types. Overloading the insertion (<<) operator allows you to specify exactly what gets printed when an object of your class is sent to an output stream.
 
-```C++
-float Fixed::toFloat(void) const {
-    return static_cast<float>(_value) / (1 << _fractionalBits);
-}
+
+Declaration and Definition
+To overload the << operator for your class, you generally do the following:
+
+Declare the operator function as a friend of your class (optional but common for <<): This isn't strictly necessary but is often done for the insertion operator because it allows the operator function to access private members of the class if necessary. It also changes the function signature slightly since the custom class object will be the second operand, not the first.
+
+Define the operator function: This function should take two parameters: a reference to an std::ostream object (for the output stream) and a constant reference to your class object. It returns a reference to an std::ostream object to allow for chaining of output operations.
+
+A friend function in C++ is a function that is not a member of a class but has access to the class's private and protected members.
+
+```C
+
+#include <iostream>
+
+class Fixed {
+public:
+    // Example member function converting the object to float for output
+    float toFloat() const { /* Implementation */ }
+
+    // Overloading the << operator
+    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
+        os << obj.toFloat(); // Use member function to get float representation
+        return os; // Allow chaining
+    }
+};
+
+
 ```
 
-Function Body
-return static_cast<float>(_value) / (1 << _fractionalBits);:
-_value is presumably a private member variable of the Fixed class, storing the fixed-point number's value as an integer. The underscore prefix follows a naming convention indicating it's a private member.
-_fractionalBits is likely another private member variable of the Fixed class, indicating the number of bits used to represent the fractional part of the fixed-point value.
-static_cast<float>(_value) converts _value from an integer to a floating-point number. This is necessary because dividing two integers in C++ results in integer division, where the fractional part of the result is discarded. Casting _value to float ensures that floating-point division is used instead, preserving the fractional part of the division result.
-(1 << _fractionalBits) performs a left bit shift on the number 1 by _fractionalBits places. Bit shifting 1 to the left n times is equivalent to calculating 2^n. This expression calculates the denominator for converting the fixed-point number to a floating-point number. For a fixed-point representation, this denominator represents the value of one unit in the least significant bit of the fractional part.
-The division static_cast<float>(_value) / (1 << _fractionalBits) calculates the floating-point representation of the fixed-point number. The numerator is the fixed-point value cast to float, and the denominator is the value of one unit in the least significant bit of the fractional part, effectively converting the fixed-point value to its floating-point equivalent.
-In summary, this function converts a fixed-point number, stored as an integer within the Fixed class, into its floating-point representation by dividing the integer value by 2^_fractionalBits, where _fractionalBits is the number of bits representing the fractional part of the number.
-_______
+________________________________
 
 
 

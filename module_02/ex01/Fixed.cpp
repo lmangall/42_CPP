@@ -48,6 +48,8 @@ int Fixed::toInt(void) const {
     return _value >> _fractionalBits;
 }
 
+//C++ operator overloading declaration and definition for the insertion (<<) 
+//this operator overload allows objects of the Fixed class to be directly output to any output stream using the << operator,
 std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
     os << obj.toFloat();
     return os;
