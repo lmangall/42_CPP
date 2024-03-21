@@ -23,6 +23,8 @@ public:
     float toFloat(void) const;           // Converts to floating-point _value
     int toInt(void) const;               // Converts to integer _value
 
+    void printBinary() const; // Addition to better understand
+
     // Overloads << to output the _value of a Fixed object as a float
     friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
