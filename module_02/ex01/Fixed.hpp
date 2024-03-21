@@ -11,9 +11,9 @@ private:
 
 public:
     Fixed();
-    Fixed(const int int_value);          // Constructs a fixed-point number from an integer
-    Fixed(const float float_value);      // Constructs a fixed-point number from a floating-point number
-    Fixed(const Fixed& other);          // Copy constructor
+    Fixed(const int int_value);
+    Fixed(const float float_value);
+    Fixed(const Fixed& other); // Copy constructor
     Fixed& operator=(const Fixed& other); // Copy assignment operator
     ~Fixed();
 
@@ -27,8 +27,8 @@ public:
 
     // Overloads << to output the _value of a Fixed object as a float
     friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
-
-    //A friend function in C++ is a function that is not a member of a class but has access to the class's private and protected members.
+    //A friend function in C++ is a function that is not a member of a class
+    //but has access to the class's private and protected members.
 };
 
 #endif

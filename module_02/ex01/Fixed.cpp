@@ -57,11 +57,15 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
 
 
 void Fixed::printBinary() const {
-    std::bitset<16> binary(_value);
-    std::string binaryStr = binary.to_string();
+    const int bits = 16;
+    std::string binaryStr(bits, '0');
 
+    for (int i = 0; i < bits; ++i) {
+        if (_value & (1 << (bits - 1 - i))) {
+            binaryStr[i] = '1';
+        }
+    }
 
     binaryStr.insert(binaryStr.length() - _fractionalBits, ".");
-
     std::cout << "Binary: " << binaryStr << std::endl;
 }

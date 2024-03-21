@@ -10,24 +10,24 @@ a = Fixed( 1234.4321f );
 
 //Additionnal tests and prints for better understanding :
 
-// Fixed const e( 1 );
-// Fixed const f( 0.5f );
-// Fixed const g( 1.25f );
-// std::cout << std::endl;
-// std::cout << "e is " << e << std::endl;
-// std::cout << "e is " << e.toInt() << " as integer" << std::endl;
-// std::cout << "Binary representation of e: " << std::endl;
-// e.printBinary();
-// std::cout << std::endl;
-// std::cout << "f is " << f << std::endl;
-// std::cout << "f is " << f.toInt() << " as integer" << std::endl;
-// std::cout << "Binary representation of f: " << std::endl;
-// f.printBinary();
-// std::cout << std::endl;
-// std::cout << "g is " << g << std::endl;
-// std::cout << "g is " << g.toInt() << " as integer" << std::endl;
-// std::cout << "Binary representation of g: " << std::endl;
-// g.printBinary();
+Fixed const e( 1 );
+Fixed const f( 0.5f );
+Fixed const g( 1.25f );
+std::cout << std::endl;
+std::cout << "e is " << e << std::endl;
+std::cout << "e is " << e.toInt() << " as integer" << std::endl;
+std::cout << "Binary representation of e: " << std::endl;
+e.printBinary();
+std::cout << std::endl;
+std::cout << "f is " << f << std::endl;
+std::cout << "f is " << f.toInt() << " as integer" << std::endl;
+std::cout << "Binary representation of f: " << std::endl;
+f.printBinary();
+std::cout << std::endl;
+std::cout << "g is " << g << std::endl;
+std::cout << "g is " << g.toInt() << " as integer" << std::endl;
+std::cout << "Binary representation of g: " << std::endl;
+g.printBinary();
 
 std::cout << std::endl;
 std::cout << "a is " << a << std::endl;//those 4 lines are using the overloaded operator <<

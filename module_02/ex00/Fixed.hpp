@@ -8,7 +8,7 @@ private:
     static const int _fractionalBits = 8; // Number of fractional bits, always 8
 
 public:
-    Fixed(); // Default constructor
+    Fixed();
     Fixed(const Fixed& other); // Copy constructor
     Fixed& operator=(const Fixed& other); // Copy assignment operator
     ~Fixed(); // Destructor
