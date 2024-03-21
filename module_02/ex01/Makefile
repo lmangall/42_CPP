@@ -1,4 +1,4 @@
-NAME	:= fixed_point
+NAME	:= fixed_point_usefuls
 
 SRCS	:=	main.cpp \
 			Fixed.cpp
@@ -11,7 +11,7 @@ CXX	:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 DEPFLAGS := -MMD -MP
 
-all: $(NAME)
+all: $(OBJS_DIR) $(NAME)
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)

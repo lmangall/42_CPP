@@ -22,7 +22,7 @@ Fixed::Fixed(const Fixed& other) : _value(other._value) {
 Fixed& Fixed::operator=(const Fixed& other) {
     if (this != &other) {
         _value = other._value;
-        std::cout << "Copy assignment operator called" << std::endl;
+        std::cout << "Copy assignment operator called (this is also a form of operator overloading, specifically overloading the copy assignment operator (=))" << std::endl;
     }
     return *this;
 }

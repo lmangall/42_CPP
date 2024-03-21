@@ -7,7 +7,7 @@ Fixed const b( 10 );
 Fixed const c( 42.42f );
 Fixed const d( b );
 a = Fixed( 1234.4321f );
-std::cout << "a is " << a << std::endl;
+std::cout << "a is " << a << std::endl;//those 4 lines are using the overloaded operator <<
 std::cout << "b is " << b << std::endl;
 std::cout << "c is " << c << std::endl;
 std::cout << "d is " << d << std::endl;

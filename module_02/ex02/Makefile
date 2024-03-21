@@ -1,4 +1,4 @@
-NAME	:= fixed_point
+NAME	:= Now_we_are_taling
 
 SRCS	:=	main.cpp \
 			Fixed.cpp

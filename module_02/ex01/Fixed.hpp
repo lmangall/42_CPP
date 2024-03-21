@@ -29,4 +29,4 @@ public:
     //A friend function in C++ is a function that is not a member of a class but has access to the class's private and protected members.
 };
 
-#endif // FIXED_H
+#endif
