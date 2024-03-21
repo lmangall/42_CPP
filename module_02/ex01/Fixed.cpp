@@ -44,6 +44,7 @@ float Fixed::toFloat(void) const {
     return static_cast<float>(_value) / (1 << _fractionalBits);
 }
 
+//right-shifting the "raw" by 8 bits to get an int
 int Fixed::toInt(void) const {
     return _value >> _fractionalBits;
 }
@@ -56,16 +57,16 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
 }
 
 
-void Fixed::printBinary() const {
-    const int bits = 16;
-    std::string binaryStr(bits, '0');
+// void Fixed::printBinary() const {
+//     const int bits = 16;
+//     std::string binaryStr(bits, '0');
 
-    for (int i = 0; i < bits; ++i) {
-        if (_value & (1 << (bits - 1 - i))) {
-            binaryStr[i] = '1';
-        }
-    }
+//     for (int i = 0; i < bits; ++i) {
+//         if (_value & (1 << (bits - 1 - i))) {
+//             binaryStr[i] = '1';
+//         }
+//     }
 
-    binaryStr.insert(binaryStr.length() - _fractionalBits, ".");
-    std::cout << "Binary: " << binaryStr << std::endl;
-}
+//     binaryStr.insert(binaryStr.length() - _fractionalBits, ".");
+//     std::cout << "Binary: " << binaryStr << std::endl;
+// }

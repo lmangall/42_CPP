@@ -119,7 +119,7 @@ Fixed Fixed::operator--(int) {
 
 // Static Member Functions for Min and Max
 Fixed& Fixed::min(Fixed& a, Fixed& b) {//ternary operator
-    return (a < b) ? a : b;//condition ? result1 : result2;
+    return (a < b) ? a : b;// condition ? result1 : result2;
 }
 
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b) {

@@ -1,4 +1,4 @@
-NAME	:= fixed_point_usefuls
+NAME	:= fixed_point_useful
 
 SRCS	:=	main.cpp \
 			Fixed.cpp

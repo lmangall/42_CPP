@@ -12,7 +12,7 @@ private:
 public:
     Fixed();
     Fixed(const int int_value);
-    Fixed(const float float_value);
+    Fixed(const float float_value);//using the f suffix
     Fixed(const Fixed& other); // Copy constructor
     Fixed& operator=(const Fixed& other); // Copy assignment operator
     ~Fixed();
