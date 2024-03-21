@@ -1,20 +1,30 @@
-// Fixed.h - Header file for the Fixed class
 #ifndef FIXED_H
 #define FIXED_H
 
+#include <iostream>
+#include <cmath>
+
 class Fixed {
 private:
-    int _value; // Stores the fixed-point number value
-    static const int _fractionalBits = 8; // Number of fractional bits, always 8
+    int _value;
+    static const int _fractionalBits = 8;
 
 public:
-    Fixed(); // Default constructor
-    Fixed(const Fixed& other); // Copy constructor
+    Fixed();
+    Fixed(const int int_value);          // Constructs a fixed-point number from an integer
+    Fixed(const float float_value);      // Constructs a fixed-point number from a floating-point number
+    Fixed(const Fixed& other);          // Copy constructor
     Fixed& operator=(const Fixed& other); // Copy assignment operator
-    ~Fixed(); // Destructor
+    ~Fixed();
 
-    int getRawBits(void) const; // Returns the raw value of the fixed-point number
-    void setRawBits(int const raw); // Sets the raw value of the fixed-point number
+    int getRawBits(void) const;
+    void setRawBits(int const raw);
+
+    float toFloat(void) const;           // Converts to floating-point _value
+    int toInt(void) const;               // Converts to integer _value
+
+    // Overloads << to output the _value of a Fixed object as a float
+    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 };
 
 #endif // FIXED_H

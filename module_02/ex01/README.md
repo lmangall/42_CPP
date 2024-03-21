@@ -1,39 +1,85 @@
-The provided code snippets together define and implement a simple C++ project that demonstrates the usage of a class representing fixed-point numbers, designed according to the Orthodox Canonical Form (OCF). The project is composed of a class definition (`Fixed.h`), its implementation (`Fixed.cpp`), a main program for demonstration (`main.cpp`), and a `Makefile` for easy compilation. Here's a breakdown of each part's role:
 
-### `Fixed.h` (Header File)
-Defines the structure of the `Fixed` class, including:
-- Private members:
-  - `int value;`: An integer that stores the fixed-point number value.
-  - `static const int fractionalBits;`: A static constant integer that defines the number of fractional bits, set to 8. This is used to differentiate between the integer and fractional parts of the fixed-point number, although its specific usage isn't shown in the provided snippets.
-- Public members (functions):
-  - A default constructor, copy constructor, copy assignment operator, and a destructor, following the OCF guidelines.
-  - `int getRawBits(void) const;`: A member function that returns the raw integer value of the fixed-point number, allowing inspection of the object's state.
-  - `void setRawBits(int const raw);`: Allows setting the raw integer value of the fixed-point number directly.
+```C++
+float Fixed::toFloat(void) const {
+    return static_cast<float>(_value) / (1 << _fractionalBits);
+}
+```
 
-### `Fixed.cpp` (Implementation File)
-Implements the `Fixed` class's functionality, specifically:
-- **Default constructor**: Initializes the fixed-point number value to `0` and prints a message indicating it was called.
-- **Copy constructor**: Initializes a new object as a copy of an existing object and prints a message. It directly copies the `value` from the other object.
-- **Copy assignment operator**: Assigns one existing object's state to another, ensuring self-assignment is handled correctly (to prevent issues like memory leaks), and prints a message.
-- **Destructor**: Cleans up resources (not explicitly needed here since there's no dynamic memory allocation) and prints a message upon object destruction.
-- **`getRawBits`**: Returns the `value` of the fixed-point number and prints a message.
-- **`setRawBits`**: Sets the `value` of the fixed-point number to a given raw integer.
+Function Body
+return static_cast<float>(_value) / (1 << _fractionalBits);:
+_value is presumably a private member variable of the Fixed class, storing the fixed-point number's value as an integer. The underscore prefix follows a naming convention indicating it's a private member.
+_fractionalBits is likely another private member variable of the Fixed class, indicating the number of bits used to represent the fractional part of the fixed-point value.
+static_cast<float>(_value) converts _value from an integer to a floating-point number. This is necessary because dividing two integers in C++ results in integer division, where the fractional part of the result is discarded. Casting _value to float ensures that floating-point division is used instead, preserving the fractional part of the division result.
+(1 << _fractionalBits) performs a left bit shift on the number 1 by _fractionalBits places. Bit shifting 1 to the left n times is equivalent to calculating 2^n. This expression calculates the denominator for converting the fixed-point number to a floating-point number. For a fixed-point representation, this denominator represents the value of one unit in the least significant bit of the fractional part.
+The division static_cast<float>(_value) / (1 << _fractionalBits) calculates the floating-point representation of the fixed-point number. The numerator is the fixed-point value cast to float, and the denominator is the value of one unit in the least significant bit of the fractional part, effectively converting the fixed-point value to its floating-point equivalent.
+In summary, this function converts a fixed-point number, stored as an integer within the Fixed class, into its floating-point representation by dividing the integer value by 2^_fractionalBits, where _fractionalBits is the number of bits representing the fractional part of the number.
+_______
 
-### `main.cpp` (Main Program)
-Demonstrates using the `Fixed` class by:
-- Creating three `Fixed` objects (`a`, `b` as a copy of `a`, and `c`).
-- Assigning the value of `b` to `c`.
-- Printing the raw bits (the integer value) of `a`, `b`, and `c`, which demonstrates that all three have the same value (`0`, as set by the default constructor).
 
-### `Makefile`
-Provides a simple set of directives for compiling the project with `make`, including:
-- Compiling the `main.cpp` and `Fixed.cpp` source files into object files (`main.o` and `Fixed.o`).
-- Linking the object files into an executable named `a.out`.
-- A `clean` command to remove the generated files.
 
-### Output Explanation
-When compiled and executed, the program:
-- Indicates when each constructor, the copy assignment operator, and the destructor are called, helping visualize the object lifecycle in a C++ program.
-- Demonstrates that the `getRawBits` function returns the value `0` for each object, as they were all either default-constructed or copy-constructed from an object with a `0` value.
 
-This setup is a straightforward example of class design in C++, emphasizing the Orthodox Canonical Form and basic operations with fixed-point numbers.
+
+
+
+
+
+
+```C++
+//static_cast<float>(_value) converts _value from an integer to a floating-point number. 
+float Fixed::toFloat(void) const {
+    return static_cast<float>(_value) / (1 << _fractionalBits);
+}
+```
+```C++
+// The conversion is done by shifting the integer value left by the number of fractional bits (_fractionalBits).
+// For _fractionalBits = 8, this is equivalent to multiplying the integer by 256,
+// effectively "scaling" the integer up to its fixed-point form where the last 8 bits represent the fractional part.
+Fixed::Fixed(const int int_value) : _value(int_value << _fractionalBits) {
+    std::cout << "Int constructor called" << std::endl;
+}
+```
+
+Fixed::Fixed(const float float_value) : _value(roundf(float_value * (1 << _fractionalBits))) {
+    std::cout << "Float constructor called" << std::endl;
+}
+How `(float_value * (1 << _fractionalBits)` converts a float to a fixed-point value
+
+### Fixed-Point Representation
+We fix the number of bits that represent the fractional part to 8 : `_fractionalBits = 8`
+
+For example, with 8 fractional bits:
+- The value `1` in fixed-point representation is stored as `256` in integer (`1 << 8`), because the binary point is considered to be 8 bits from the right.
+- Similarly, `0.5` is `128` (`0.5 * 256`), `0.25` is `64`, etc.
+
+### Converting 
+Fixed-Point = floating-point * 1 << _fractionalBits
+floating-point= Fixed-Point / (1 <<_fractionalBits)
+1 << 8 = 256
+
+ 1.75 Floating-Point to Fixed-Point 
+Multiply 1.75 by 256 (1 << 8) = 448.
+Fixed-Point Representation of value 448 in 16 bits binary is 00000001.11000000.
+
+ 2.25 Floating-Point to Fixed-Point 
+Multiply 1.75 by 256 (1 << 8) = 576.
+Fixed-Point Representation of value 448 in 16 bits binary is 00000010.01000000
+​
+
+
+### Detailed Example
+Let's use a table to illustrate converting a fixed-point value to a floating-point number with `_fractionalBits = 8`.
+
+| Fixed-Point(Integer) | Binary Representation | Operation   | Floating-Point Value |
+|-----------------------|----------------------|-------------|----------------------|
+| 256                   | `00000001.00000000`   | `256 / 256` | 1.0                 |
+| 128                   | `00000000.10000000`   | `128 / 256` | 0.5                 |
+| 64                    | `00000000.01000000`   | `64 / 256`  | 0.25                |
+| 512                   | `00000010.00000000`   | `512 / 256` | 2.0                 |
+
+In these examples, dividing the fixed-point `_value` by `2^_fractionalBits` (or `256` for `_fractionalBits = 8`) converts the integer representation back to the real number it represents. The division effectively moves the binary point back to its correct position to retrieve the original floating-point value.
+
+This mechanism allows fixed-point arithmetic to perform operations with a level of precision determined by the number of fractional bits, using only integer math. When you need to display or further process these numbers as floating-point values, converting them back using the described method provides the actual floating-point equivalent.
+
+
+
+

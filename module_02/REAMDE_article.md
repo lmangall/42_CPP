@@ -1,7 +1,7 @@
 
 
 
-
+https://medium.com/@oumaimafisaoui/floating-and-fixed-point-representation-in-c-what-is-going-on-b71af54718a5
 
 Fixed point binary:
 https://www.youtube.com/watch?v=76NWvD0vB-8&ab_channel=JamesWaring
