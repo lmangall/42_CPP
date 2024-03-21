@@ -1,5 +1,15 @@
 
 
+
+
+
+Fixed point binary:
+https://www.youtube.com/watch?v=76NWvD0vB-8&ab_channel=JamesWaring
+
+Fixed Point Numbers in C++
+https://www.youtube.com/watch?v=ZMsrZvBmQnU&ab_channel=javidx9
+
+
 https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html
 https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html
 https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_printing.html
