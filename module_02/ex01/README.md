@@ -6,11 +6,8 @@ One common use of operator overloading is to define how objects of a custom clas
 Declaration and Definition
 To overload the << operator for your class, you generally do the following:
 
-Declare the operator function as a friend of your class (optional but common for <<): This isn't strictly necessary but is often done for the insertion operator because it allows the operator function to access private members of the class if necessary. It also changes the function signature slightly since the custom class object will be the second operand, not the first.
-
 Define the operator function: This function should take two parameters: a reference to an std::ostream object (for the output stream) and a constant reference to your class object. It returns a reference to an std::ostream object to allow for chaining of output operations.
 
-A friend function in C++ is a function that is not a member of a class but has access to the class's private and protected members.
 
 ```C
 
@@ -22,7 +19,7 @@ public:
     float toFloat() const { /* Implementation */ }
 
     // Overloading the << operator
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
+    std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
         os << obj.toFloat(); // Use member function to get float representation
         return os; // Allow chaining
     }

@@ -49,8 +49,8 @@ public:
     static Fixed& max(Fixed& a, Fixed& b);
     static const Fixed& max(const Fixed& a, const Fixed& b);
 
-    // Friend function for stream insertion
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 };
+
+    std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 #endif

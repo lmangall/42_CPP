@@ -134,7 +134,6 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
     return (a > b) ? a : b;
 }
 
-// Friend function for stream insertion
 std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
     os << obj.toFloat();
     return os;

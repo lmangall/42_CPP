@@ -25,10 +25,7 @@ public:
 
     void printBinary() const; // Addition to better understand
 
-    // Overloads << to output the _value of a Fixed object as a float
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
-    //A friend function in C++ is a function that is not a member of a class
-    //but has access to the class's private and protected members.
 };
+    std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 #endif
