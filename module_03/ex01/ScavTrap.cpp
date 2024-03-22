@@ -7,14 +7,14 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attackDamage = 20;
-	std::cout << "\033[34mScavTrap is born! Gate keeper mode on.\033[0m" << std::endl;
+	std::cout << "\033[34mScavTrap is born! (from default constructor)\033[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
-    std::cout << "\033[34mScavTrap " << _name << " is born! Gate keeper mode on.\033[0m" << std::endl;
+    std::cout << "\033[34mScavTrap " << _name << " is born! (from parametrized constructor)\033[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
